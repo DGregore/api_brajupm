@@ -12,7 +12,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-    command: sh -c "npm ci --legacy-peer-deps && npm run start"
+    command: sh -c "npm install --legacy-peer-deps && npm run start"
 
 volumes:
   node_modules:    # Criação do volume nomeado
