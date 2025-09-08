@@ -4,10 +4,10 @@ services:
   app:
     image: node:22-alpine
     container_name: contratos_api
-    working_dir: l/var/lib/docker/volumes/app
+    working_dir: /var/lib/docker/volumes/app
     volumes:
-      - .:l/var/lib/docker/volumes/app
-      - node_modules:l/var/lib/docker/volumes/app/node_modules   # volume nomeado para node_modules
+      - .:/var/lib/docker/volumes/app
+      - node_modules:/var/lib/docker/volumes/app/node_modules   # volume nomeado para node_modules
     ports:
       - "3000:3000"
     environment:
