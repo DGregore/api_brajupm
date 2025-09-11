@@ -4,15 +4,19 @@ services:
   app:
     image: node:22-alpine
     container_name: contratos_api
-    working_dir: /var/lib/docker/volumes/app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    working_dir: /app
     volumes:
-      - .:/var/lib/docker/volumes/app
-      - node_modules:/var/lib/docker/volumes/app/node_modules   # volume nomeado para node_modules
+      - .:/app
+      - node_modules:/app/node_modules   # volume nomeado para node_modules
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-    command: sh -c "npm install --legacy-peer-deps && npm run start"
+    #command: "npm install --legacy-peer-deps && npm run start:prod"
 
 volumes:
   node_modules:    # Criação do volume nomeado
